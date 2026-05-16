@@ -117,12 +117,6 @@ Response: We agree. GrowStreams supports any granularity from per-second to per-
 
 Response: We have done both. Demand is demonstrated above with live numbers. The milestone structure puts 85% of development funding behind Mainnet adoption metrics, not code delivery.
 
-**From W. Eric Saranlecki, co-founder, Canton Network:**
-
-"You only need a champion for it to be approved — it would come from the group that reviews it."
-
-Response: Filed as instructed. We are asking the reviewing group to evaluate this on the merits, which now include the demand evidence above.
-
 **From shaul-da, voting committee member, PR #94 discussion:**
 
 "If the milestones are stated in a way that completely tie the payment to adoption metrics, e.g. amount of burn driven by this app, I'd be happy to vote yes."
