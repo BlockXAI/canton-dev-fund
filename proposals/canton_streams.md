@@ -1,14 +1,14 @@
 ## Development Fund Proposal: GrowStreams — Privacy-Native Payment Streaming for Canton
 
-- **Author:** BlockX AI Ltd
+- **Author:** Satyam Singhal, BlockX AI Ltd
+- **Champion:** srikanth-bitdynamics (BitDynamics)
+- **Label:** financial-workflows-composability
 - **Contact:** info@blockxai.xyz
 - **Status:** Submitted
 - **Created:** 2026-05-16
 - **Repository:** https://github.com/BlockX-AI/Canton_Streams_RewardApp
 - **Live product:** https://growstreams.xyz
 - **Canton campaign:** https://www.cctools.network/earn/growstreams-x-cctools
-- **Label:** financial-workflows-composability
-- **Champion:** Srikant @srikanth-bitdynamics
 
 ---
 
@@ -18,9 +18,9 @@ This proposal requests funding for GrowStreams, an open-source payment streaming
 
 Payment streaming has proven its value on other networks. Superfluid has processed over a billion dollars. Sablier has crossed a billion in cumulative volume. But both operate on public chains where every stream rate, balance, and counterparty is visible to anyone. That makes them structurally unusable for the institutional workflows Canton is designed for.
 
-GrowStreams is the same primitive, built for Canton's privacy model and institutional participant base. Stream terms and balances are visible only to authorized parties. Settlement is enforced on-ledger through Daml templates. The protocol is asset-agnostic and targets CIP-56 token interfaces, with Canton Coin and USDCx as the initial reference paths.
+GrowStreams is the same primitive built natively for Canton's privacy model. Stream terms, rates, and balances are visible only to authorized parties. Settlement is enforced on-ledger through Daml templates. The protocol targets CIP-56 token interfaces for asset-agnostic settlement, with Canton Coin and USDCx as the initial reference paths.
 
-This proposal is not speculative. GrowStreams is live, tested, and has already demonstrated real demand from the Canton community. Before filing, we engaged directly with Melvis (Executive Director, Canton Foundation) and W. Eric Saranlecki (Canton co-founder). Both shaped this proposal. Their specific guidance is reflected in the milestone structure.
+This proposal is not speculative. GrowStreams is live, tested, and has demonstrated real demand from the Canton community. Before filing, we engaged directly with Melvis (Executive Director, Canton Foundation) and W. Eric Saranlecki (Canton co-founder). Their specific guidance is reflected in the milestone structure below.
 
 The strongest Canton-native use cases we are targeting:
 
@@ -31,17 +31,13 @@ The strongest Canton-native use cases we are targeting:
 - USDCx repo interest and custody fee accrual
 - AI agent task payments on Canton
 
-Current integration partner: CCTools, the most recently approved Dev Fund project. 4,300 people participated in our joint Canton launch campaign in under 24 hours. The demand the committee asked PR #94 to demonstrate is already present and documented below.
-
 ---
 
 ## Motivation
 
 Canton teams that want time-based payment flows today have no shared primitive to build from. They either write their own streaming logic from scratch, batch payouts periodically, or rely on manual transfers. Every team solving this independently creates duplicated effort around the same correctness concerns: deterministic accrual over time, withdrawal and settlement correctness, privacy of payment terms, cancellation and refund handling, and reusable SDK surfaces.
 
-This is the same gap payment streaming filled on other networks. The difference on Canton is that the use cases are institutional, the payment terms are commercially sensitive, and the participants already exist on the network. They do not need to be acquired. They are running Canton applications today and settling obligations that accrue continuously in periodic batches.
-
-We started building GrowStreams on Vara Network in July 2025 to prove the model worked. We ported it to Canton because the participants we are building for are here, not on Vara. Goldman Sachs, DTCC, Euroclear, Broadridge — these organizations are already on Canton. The streaming primitive that serves their continuous obligations does not exist yet.
+We started building GrowStreams on Vara Network in July 2025 to prove the model worked. We ported it to Canton because the participants we are building for are here. Goldman Sachs, DTCC, Euroclear, Broadridge — these organizations are already on Canton. The streaming primitive that serves their continuous obligations does not exist yet.
 
 ---
 
@@ -69,126 +65,27 @@ And the system will:
 
 ---
 
-## Why We Are Stronger Than Previous Attempts
-
-The committee declined PR #94 for one consistent reason across every review cycle: lack of clear demand or confirmed users. Hythloda's closing comment was direct — "we would need to see stronger evidence that institutions or ecosystem participants plan to adopt a prefunded streaming model."
-
-We have that evidence. Here is the comparison.
-
-**PR #94 at the time of each decline:**
-
-Named design partners: BitDynamics, Lumens.fi, Gateway — interest expressed in comments, no committed integrations, no on-chain activity.
-
-User base: zero registered users, zero quest completions, zero campaign participants.
-
-Ecosystem traction: no CCTools listing, no campaign, no community signal.
-
-**GrowStreams today:**
-
-Named integration partner: CCTools (most recently approved Dev Fund project), active partnership, joint campaign live on their platform.
-
-Campaign results: 4,300+ participants in under 24 hours. 2,500 invite codes sold out same day. 12,950 campaign views. 3,661 verified participants with completed tasks on CCTools.
-
-Platform metrics at growstreams.xyz: 1,317 registered users, 3,078 quest completions, 398,940 XP minted on-chain, 24 active quests, 5 active campaigns.
-
-Community: 4,519 X followers, +2,900 gained in a single day from the Canton launch. CCTools posted publicly: "Yesterday's GrowStreams Canton launch brought 4,300+ participants. This is what real discovery looks like."
-
-CCTools ecosystem directory: 7,233 upvotes, 8,905 views, score 66/100.
-
-Technical proof: 66/66 consecutive tests passing on Canton 3.4.11 LocalNet, six institutional use cases verified, zero errors in 104 seconds of continuous operation.
-
-Foundation engagement: direct conversations with Melvis (Executive Director) and Eric (co-founder) before filing. Both shaped this proposal's structure. Their guidance is cited below and followed precisely.
-
-The demand question has been answered. This proposal is structured to convert that demand into active streams on Canton Mainnet.
-
----
-
-## Foundation Feedback and How We Responded
-
-Before filing, we engaged with the Canton Foundation directly. The two pieces of guidance we received shaped every part of this proposal.
-
-**From Melvis, Executive Director, Canton Foundation:**
-
-"Per second is probably too aggressive. Hourly or even daily payment streams already move the needle compared to the status quo."
-
-Response: We agree. GrowStreams supports any granularity from per-second to per-day. The per-second capability is the protocol's precision ceiling, not the primary institutional pitch. This proposal leads with hourly and daily streams as the meaningful improvement over monthly batch settlement for the institutions currently on Canton.
-
-"You will have to demonstrate demand as part of the grant. Either show demand upfront, or structure the grant such that the bulk of the grant is attached to adoption milestones."
-
-Response: We have done both. Demand is demonstrated above with live numbers. The milestone structure puts 85% of development funding behind Mainnet adoption metrics, not code delivery.
-
-**From shaul-da, voting committee member, PR #94 discussion:**
-
-"If the milestones are stated in a way that completely tie the payment to adoption metrics, e.g. amount of burn driven by this app, I'd be happy to vote yes."
-
-Response: Milestone 3 requires 500,000 CC burned through GrowStreams template IDs by external parties before the primary funding tranche is released. The performance bonus in Milestone 4 is paid entirely in proportion to on-chain CC burn. This is exactly the structure described.
-
-**From leonidr-c7, reviewer, PR #94:**
-
-"Committing to live use on Mainnet would be a stronger commitment."
-
-Response: M3 acceptance criteria require active streams on Mainnet with verifiable on-chain activity. TestNet is M1. Mainnet is M3.
-
-"Would be great if your proposal and the SDK targeted token standard assets specifically."
-
-Response: SettlementAdapter targets CIP-56 V1 and V2 token interfaces. CIP-103 dApp API integration covers all lifecycle operations.
-
-**From daravep, reviewer, PR #94:**
-
-"Note you might want to build this using the dApp architecture based on CIP-103."
-
-Response: All lifecycle operations are exposed through CIP-103 JSON-RPC surface. Integration with @canton-network/wallet-sdk as preferred backend.
-
----
-
-## Current Demand and Integration Partners
+## Current Demand and Design-Partner Validation
 
 This proposal is not based only on theoretical demand.
 
 Current named design-partner signals include:
 
-- **BitDynamics** — LP incentive streaming, contributor reward distribution, and recurring campaign payout flows. Joint Canton launch campaign generated 4,300+ participants in under 24 hours with 3,661 verified on-chain task completions.
+- **CCTools** — LP incentive streaming, contributor reward distribution, and recurring campaign payout flows. Joint Canton launch campaign generated 4,300+ participants in under 24 hours with 3,661 verified on-chain task completions. CCTools publicly confirmed: "Yesterday's GrowStreams Canton launch brought 4,300+ participants. This is what real discovery looks like."
 
-- **Lumens.fi** — usage-based billing between Canton parties for AI-powered smart contract generation. Metered API access flows requiring continuous settlement as contracts are generated and deployed.
+- **Ginie (BlockX AI)** — usage-based billing between Canton parties for AI-powered smart contract generation. Metered API access flows requiring continuous settlement as contracts are generated and deployed.
 
-- **CCTools** — continuous reward streaming to contributors as they earn, replacing batch payouts at period end. Campaign owners depositing real USDC need streaming rails for real-time contributor reward distribution on Canton.
+- **Web3Cash** — continuous reward streaming to contributors as they earn, replacing batch payouts at period end. Campaign owners depositing real USDC need streaming rails for real-time contributor reward distribution on Canton.
+
+We are actively reaching out to additional Canton ecosystem projects to collect on-PR validation comments from teams that want to use GrowStreams for specific workflows. We welcome any Canton project with a concrete use case to comment on this PR with their workflow needs.
 
 These are not abstract examples. They map directly to live workflow needs in the current Canton ecosystem, and the revised milestones are tied to partner validation and external usage rather than only implementation completeness.
-
-**CCTools integration:**
-
-CCTools is the most recently approved Canton Dev Fund project. They approached us directly after seeing our build. We ran a joint campaign on their platform starting May 14, 2026.
-
-Results: 4,300+ participants, 2,500 invite codes claimed in under 24 hours, 12,950 campaign views, 3,661 verified participants. CCTools issued a second round of 1,500 codes immediately because demand exceeded supply.
-
-CCTools stated publicly: "Yesterday's GrowStreams Canton launch brought 4,300+ participants. In the process, GrowStreams gained +2,900 new followers on X. This is what real discovery looks like."
-
-**GrowStreams platform metrics (growstreams.xyz, live):**
-
-- 1,317 registered users
-- 3,078 quest completions
-- 398,940 XP minted on-chain
-- 24 active quests
-- 5 active campaigns
-- 6,213 invites created, 1,284 used
-
-**CCTools ecosystem directory:**
-
-- 7,233 upvotes
-- 8,905 views
-- Score: 66/100 (Activity 77/100, Maturity 66/100, Community 62/100)
-
-**X / Twitter:**
-
-- 4,519 followers, +2,900 gained in a single day from the Canton community launch.
-
-These are not interest comments in a GitHub thread. They are verified campaign participants, and documented community response. The committee asked PR #94 to show this. We are showing it before being asked.
 
 ---
 
 ## Canton-Native Use Cases
 
-Per Melvis's guidance, we lead with hourly and daily streams as the realistic improvement over the status quo for institutions currently on Canton.
+Per guidance from the Canton Foundation, we lead with hourly and daily streams as the realistic improvement over the status quo for institutions currently on Canton. The per-second precision is the protocol's capability ceiling, not the primary institutional pitch.
 
 **LP incentives and market-maker retainers**
 
@@ -204,11 +101,11 @@ Token distributions for contributors, grants, launch participants, and private r
 
 **Consortium revenue distribution**
 
-Multiple institutions sharing a Canton application today split revenue quarterly via spreadsheet. With the Split Router, proportional distribution happens continuously. On-chain math is the agreement. No back-office dispute is possible because there is no calculation to dispute.
+Multiple institutions sharing a Canton application today split revenue quarterly via spreadsheet. With the Split Router, proportional distribution happens continuously. On-chain math is the agreement. No back-office dispute is possible.
 
 **USDCx repo interest and custody fee accrual**
 
-USDCx launched on Canton in December 2025. Broadridge processes hundreds of billions in daily repo on Canton. Repo interest accrues every second. Settlement is currently scheduled and periodic. GrowStreams makes those interest flows continuous between counterparties with full privacy on negotiated rates.
+USDCx launched on Canton in December 2025. Repo interest accrues every second. Settlement is currently scheduled and periodic. GrowStreams makes those interest flows continuous between counterparties with full privacy on negotiated rates.
 
 **AI agent payments**
 
@@ -218,18 +115,20 @@ Canton's Director of Institutional Sales posted publicly in April 2026: "The age
 
 ## Standards Alignment
 
-- **CIP-56 V1 and V2:** the SettlementAdapter sits behind a narrow token boundary that targets CIP-56 token interfaces. Stream engine logic stays asset-agnostic. CIP-56 V2 support delivered alongside or shortly after V2 ratification.
+- **CIP-56 V1 and V2:** the SettlementAdapter sits behind a narrow token boundary targeting CIP-56 token interfaces. Stream engine logic stays asset-agnostic. CIP-56 V2 support delivered alongside or shortly after V2 ratification.
 - **CIP-103 dApp API:** all lifecycle operations (Create, Withdraw, Pause, Resume, Cancel, MutualCancel, Renew, TopUp, Clip, Complete) exposed through CIP-103 JSON-RPC surface. Any CIP-103 compliant wallet can authorize stream operations without bespoke integration.
 - **Wallet SDK:** integrates with @canton-network/wallet-sdk as preferred ledger backend.
-- **Mainnet commitment:** active streams on Canton Mainnet are required acceptance criteria for M3. This is not a TestNet-only proposal.
+- **Mainnet commitment:** active streams on Canton Mainnet are required acceptance criteria for M3.
 
 ---
 
 ## Implementation
 
-### The accrual model
+### How accrual state is stored and why there is no settlement risk
 
-GrowStreams does not write to the ledger every second. That would generate unnecessary transaction fees and is not how Canton's Ledger Time model should be used.
+This question deserves a direct answer because it is the most important technical concern about streaming primitives.
+
+GrowStreams does not write to the ledger every second. Instead, the StreamAgreement contract stores the sender, receiver, rate, total deposited, total withdrawn, and the timestamp of the last settlement. These fields are always on-chain. Nothing is stored off-chain.
 
 The accrual formula is:
 
@@ -237,9 +136,21 @@ The accrual formula is:
 Accrued = (Ledger Time - Last Settled) x Rate
 ```
 
-When a stream opens, the contract records the sender, receiver, rate, deposit, and start time. Nothing happens on-chain while time passes. When a party calls ObligationView, the contract calculates the exact accrued amount at that Ledger Time moment as a non-consuming choice — no transaction, no fee. When the receiver withdraws, one transaction settles the exact accrued amount and updates the last settled timestamp.
+When a party calls ObservationView, the contract computes the accrued amount deterministically from on-chain state using Canton's Ledger Time. This is a non-consuming choice — it reads but does not write, so there is no transaction fee. The result is deterministic: any party with access can compute the same number independently from the same on-chain state.
 
-A 30-day stream at any rate generates three or four on-chain transactions total. The precision is in the math, not the transaction count. This directly addresses the fee concern raised by Melvis — we are not proposing per-second on-chain writes.
+When the receiver calls Withdraw, one transaction runs the formula at that exact Ledger Time moment, transfers the exact accrued amount, and updates the Last Settled timestamp on-chain. The contract enforces:
+
+```
+totalWithdrawn <= accrued(now) <= totalDeposited
+```
+
+This invariant is enforced on-ledger by the Daml template. A receiver can never withdraw more than has actually accrued. A sender's deposit is never at risk beyond what they committed. There is no off-chain settlement engine, no oracle, and no trusted third party. The math and the state are both on Canton.
+
+A 30-day stream generates approximately three to four on-chain transactions: one to open, one or more withdrawals, and one to close. The precision is in the deterministic formula, not the transaction count.
+
+### Supported assets
+
+Today the protocol is implemented and tested with the GROW token (a CIP-56 compatible fungible token). The SettlementAdapter is designed to be asset-agnostic by targeting CIP-56 token interfaces. Canton Coin and USDCx are the M1 and M2 integration paths respectively. Any CIP-56 compliant token can be supported without changes to the core streaming logic.
 
 ### Two streaming models
 
@@ -247,17 +158,15 @@ A 30-day stream at any rate generates three or four on-chain transactions total.
 
 The sender locks a balance into escrow at creation. The contract tracks deposited, withdrawn, and accrued amounts. Each Withdraw transfers only what has accrued and not yet been withdrawn. Each Cancel or Complete settles the accrued amount and returns the remainder. No stream can promise more than the funded balance.
 
-This removes credit risk, liquidation mechanics, and insolvency handling from the design. It is well-suited to LP incentive campaigns, vesting schedules, grants, milestone escrow, and fixed-term validator retainers where the payer wants to commit the full obligation upfront.
+This removes credit risk, liquidation mechanics, and insolvency handling from the design. It is suited to LP incentive campaigns, vesting schedules, grants, milestone escrow, and fixed-term retainers.
 
 **Non-prefunded rolling top-up streams**
 
 For open-ended recurring flows, the sender maintains funding through top-ups without locking the full lifetime amount. Withdrawals remain bounded by what has been funded and accrued. This improves capital efficiency for subscriptions, recurring infrastructure billing, and ongoing service retainers.
 
-Both models are valid. The right choice depends on the use case, and the documentation makes that boundary explicit.
-
 ### Core contracts
 
-**StreamAgreement** — core Daml template. Sender, receiver, optional observers, token reference, deposited amount, withdrawn amount, timing configuration, stream mode, status.
+**StreamAgreement** — core Daml template. Sender, receiver, optional observers, token reference, deposited amount, withdrawn amount, last settled timestamp, rate, stream mode, status.
 
 **StreamGroup** — groups related streams for batch workflows such as LP incentive campaigns or multi-recipient payroll distributions.
 
@@ -289,8 +198,6 @@ Stream terms, rates, and balances are visible only to signatories and observers.
 
 ### Core invariants
 
-The implementation is tested against explicit invariants:
-
 - 0 <= totalWithdrawn <= accrued(now) <= totalFunded
 - alreadyWithdrawn + withdrawable + refundable = totalFunded
 - accrued amount is monotonic in Ledger Time
@@ -300,7 +207,7 @@ The implementation is tested against explicit invariants:
 
 ### SDK, dashboard, and wallet integration
 
-- TypeScript SDK published to npm as @growstreams/sdk for create, query, withdraw, cancel, renew, top-up, and history flows
+- TypeScript SDK published to npm as @growstreams/sdk
 - reference React dashboard
 - CIP-103 dApp API bindings for wallet-driven authorization
 - integration examples and documentation
@@ -309,25 +216,21 @@ The implementation is tested against explicit invariants:
 
 ## Proven technical state
 
-Before this proposal was filed, the following was already working on Canton 3.4.11 LocalNet:
+66 consecutive test passes across 6 use cases with zero errors in 104 seconds of continuous operation on Canton 3.4.11 LocalNet. Real Daml contracts. Real GROW token movements between four parties.
 
-66 consecutive test passes across 6 use cases with zero errors in 104 seconds of continuous operation. Real Daml contracts. Real GROW token movements between four parties (Admin, Alice, Bob, Carol).
+**Payroll streaming** — 1 GROW per second, Alice to Bob. Bob withdrew 120.634 GROW in cycle 1, approximately 10 GROW in each subsequent 10-second cycle. Mathematically exact across 11 cycles.
 
-The six working use cases:
+**LP reward distribution** — 10 GROW per second pool, 70% to Alice and 30% to Carol. Ratio exact across all 11 cycles.
 
-**Payroll streaming** — 1 GROW per second, Alice to Bob. Bob withdrew 120.634 GROW in cycle 1, approximately 10 GROW in each subsequent 10-second cycle. Mathematically exact to the second across 11 cycles.
+**Institutional billing** — 0.5 GROW per second per session, pause and resume per session. GrowToken created atomically in the same transaction as the Pause choice.
 
-**LP reward distribution** — 10 GROW per second pool, 70% to Alice and 30% to Carol. The ratio 847 to 363 equals 2.33, which equals 70/30. Exact across all 11 cycles.
-
-**Institutional billing** — 0.5 GROW per second per session, pause and resume per session. GrowToken created atomically in the same transaction as the Pause choice. Canton atomicity working as expected.
-
-**Token vesting** — 12,000 GROW with a cliff on May 4, 2026. VestingWithdraw assertFails before the cliff across all 11 test cycles. No admin override possible.
+**Token vesting** — 12,000 GROW with a cliff on May 4, 2026. VestingWithdraw assertFails before the cliff across all 11 test cycles.
 
 **SaaS subscription** — 1 GROW per second, delta approximately 10 GROW per 10-second interval across 11 cycles. Zero rounding errors.
 
-**Milestone escrow** — Admin confirms deliverable, 300 GROW transfers and GrowToken is created in the same Canton transaction. DVP. Atomic. Private.
+**Milestone escrow** — Admin confirms deliverable, GROW transfers and GrowToken is created in the same Canton transaction. DVP. Atomic. Private.
 
-The terminal output from this test run is in the /evidence/ folder of the repository.
+Terminal output from this test run is in the /evidence/ folder of the repository. Any committee member can reproduce these results.
 
 ---
 
@@ -337,15 +240,42 @@ Sablier demonstrates that prefunded streaming can reach product-market fit. Over
 
 Superfluid demonstrates the non-prefunded model at scale. Over 1.25 billion dollars streamed to more than one million recipients across 850 projects.
 
-Neither of these protocols could serve Canton's institutional use cases because their stream rates are public. Canton's sub-transaction privacy is what makes streaming viable for the participants already on this network. That is the differentiation this proposal is built on.
+Neither protocol could serve Canton's institutional use cases because their stream rates are public. Canton's sub-transaction privacy is what makes streaming viable for the participants already on this network.
+
+---
+
+## Live demand evidence
+
+**CCTools campaign — May 2026**
+
+- 4,300+ participants in under 24 hours
+- 2,500 invite codes claimed same day, round 2 launched immediately
+- 12,950 campaign views
+- 3,661 verified participants with completed tasks
+
+**GrowStreams ecosystem directory on CCTools**
+
+- 7,233 upvotes
+- 8,905 views
+- Score 66/100
+
+**growstreams.xyz platform**
+
+- 1,317 registered users
+- 3,078 quest completions
+- 398,940 XP minted on-chain
+- 24 active quests, 5 active campaigns
+
+**X / Twitter**
+
+- 4,519 followers
+- +2,900 gained in a single day from the Canton community response
 
 ---
 
 ## Milestones
 
-The structure follows Melvis's guidance directly: demand is demonstrated upfront, and the bulk of funding is tied to Mainnet adoption metrics. It also follows shaul-da's stated condition from the PR #94 voting thread: the primary funding tranche requires verifiable CC burn by external parties.
-
-15% of development funding is released at M1. 85% requires active streams on Mainnet.
+Per guidance from the Canton Foundation: demand is demonstrated upfront and the bulk of funding is tied to Mainnet adoption metrics. 15% of development funding is released at M1. 85% requires active streams on Canton Mainnet.
 
 ---
 
@@ -358,7 +288,7 @@ Deliverables:
 - Canton TestNet deployment with public contract ID verifiable on Canton explorer
 - daml test output showing all 6 use cases passing, stored in /evidence/ folder
 - TypeScript SDK v0.1.0 published to npm as @growstreams/sdk
-- CIP-56 V1 token standard conformance
+- CIP-56 V1 token standard conformance — Canton Coin reference flow
 - CIP-103 dApp API bindings for all lifecycle operations
 - developer quickstart documentation at growstreams.xyz/docs
 - CCTools integration live with verifiable on-chain activity
@@ -381,11 +311,9 @@ Deliverables:
 - independent security audit by a qualified Daml and Canton reviewer, report published publicly
 - all Critical and High findings remediated before Mainnet deployment
 - Canton Mainnet deployment with contract ID verifiable on Canton explorer
-- SDK v1.0 with CIP-56 V2 support and full API documentation
-- SettlementAdapter supporting USDCx and Canton Coin natively
+- SDK v1.0 with CIP-56 V2 support and USDCx reference integration
 - React reference dashboard and proxy
 - non-prefunded rolling top-up path implemented and documented
-- integration examples for LP incentives, vesting, and recurring billing
 - 3 external Canton dApp integrations live on TestNet
 
 Acceptance criteria:
@@ -401,7 +329,7 @@ Acceptance criteria:
 
 **230,000 CC**
 
-This is where 62% of total development funding is released. Nothing in this milestone is paid for code delivery. Everything is paid for demonstrated usage by external parties on Mainnet.
+Nothing in this milestone is paid for code delivery. Everything is paid for demonstrated usage by external parties on Mainnet.
 
 Deliverables:
 
@@ -426,7 +354,7 @@ Acceptance criteria:
 
 **Up to 500,000 CC**
 
-A metric-triggered tranche running for 12 months from M3 delivery. Disbursed in 100,000 CC increments as on-chain CC burn through GrowStreams template IDs crosses each 200,000 CC threshold.
+Disbursed in 100,000 CC increments as on-chain CC burn through GrowStreams template IDs crosses each 200,000 CC threshold. Grantee excluded. 12-month window from M3 delivery. Capped at 500,000 CC total.
 
 Acceptance criteria per tranche:
 
@@ -452,13 +380,11 @@ Deliverables:
 | M4: Performance bonus | up to 500,000 CC | 200K CC burn per 100K CC tranche |
 | **Total** | **370,000 CC + up to 500,000 CC** | |
 
-15% of development funding paid at M1. 85% gated on Mainnet adoption. The bonus is 100% contingent on CC burn driven by external parties.
-
 ---
 
 ## Acceptance criteria
 
-The committee can evaluate completion without trusting the team's self-reporting. Every criterion below is verifiable on-chain or via public sources.
+Every criterion below is verifiable on-chain or via public sources without trusting the team.
 
 - Daml templates implementing all promised stream types and lifecycle choices
 - prefunded settlement and refund behavior working for CC and USDCx
@@ -469,8 +395,8 @@ The committee can evaluate completion without trusting the team's self-reporting
 - dashboard and reference proxy available for stream creation, monitoring, and withdrawal
 - privacy and authorization behavior documented and enforced on-ledger
 - local demo scripts covering all core flows
-- Mainnet deployment with active streams — not TestNet only
-- 10 or more featured apps using the system in production on Mainnet with 100 or more active streams over a rolling 30-day window
+- Mainnet deployment with active streams
+- 10 or more Canton dApp integrations in production on Mainnet with 100 or more active streams over a rolling 30-day window
 - 500,000 CC burned through GrowStreams template IDs by external parties
 - independent audit and remediation of Critical and High findings
 - maintenance and support window committed
@@ -481,13 +407,13 @@ Project-specific conditions:
 - GrowStreams remains a streaming primitive, not a billing platform or DeFi protocol
 - stream state and settlement rules remain on-ledger in Daml templates
 - stream privacy is preserved, no global public exposure of terms or balances
-- the proposal clearly distinguishes prefunded and non-prefunded models and does not conflate them
+- prefunded and non-prefunded models are clearly distinguished and documented
 
 ---
 
 ## Security and maintenance
 
-The security process includes a documented threat model, adversarial and edge-case testing against the core invariants, independent audit by a qualified Daml and Canton reviewer, remediation of all Critical and High findings before Mainnet positioning, and a defined maintenance window. Early adopters will not be asked to rely on an unsupported release.
+The security process includes a documented threat model, adversarial and edge-case testing against the core invariants, independent audit by a qualified Daml and Canton reviewer, remediation of all Critical and High findings before Mainnet positioning, and a defined maintenance window.
 
 ---
 
@@ -495,27 +421,17 @@ The security process includes a documented threat model, adversarial and edge-ca
 
 BlockX AI Ltd is a UK registered company (Companies House: 16254630).
 
-Designed the Obligation-First accrual architecture. Led Vara Network deployment (7 contracts, 53/53 tests passing). Built and ran the 21-day live campaign with AI-verified per-second streaming payouts. Leading the Canton build.
+Satyam Singhal — founder. Designed the Obligation-First accrual architecture. Led Vara Network deployment with 7 contracts and 53 tests passing. Built and ran the 21-day live campaign with AI-verified per-second streaming payouts. Leading the Canton build.
 
 Engineering team — smart contract engineers across Rust and Daml, production REST API with dual-mode signing, TypeScript SDK, and AI contribution scoring agent.
 
 Community and content team — built 4,519 X followers organically without paid promotion. Coordinated the CCTools integration that generated 4,300+ participants in a single day.
 
-Open source contributors — organic demo videos from community members without solicitation or payment. Active GitHub contributor base.
-
----
-
-## Co-marketing
-
-On release we will coordinate with the Foundation on announcement timing, publish a technical post explaining the streaming architecture and Canton's privacy advantages over public-chain alternatives, and run at least one live demo covering LP incentives, node billing, and USDCx settlement flows.
-
 ---
 
 ## Sustainability
 
-Protocol revenue model: 2.5% fee on settled streams. A single 10 million dollar consortium flowing obligations annually generates 250,000 dollars in protocol revenue — covering the full grant cost from one client in year one.
-
-All Daml packages, TypeScript SDK, reference dashboard, and documentation released under Apache 2.0. If BlockX AI ceases operations, the entire stack is forkable by any Canton community member.
+Protocol revenue model: 2.5% fee on settled streams. All Daml packages, TypeScript SDK, reference dashboard, and documentation released under Apache 2.0.
 
 ---
 
@@ -531,3 +447,19 @@ All Daml packages, TypeScript SDK, reference dashboard, and documentation releas
 | Contact | agrim@growstreams.xyz |
 
 ---
+
+## Checklist
+
+- [x] Proposal file added under /proposals/
+- [x] Milestones and funding amounts defined
+- [x] Acceptance criteria included, all verifiable on-chain without trusting the team
+- [x] Alignment with Canton priorities described
+- [x] Demand demonstrated with live verifiable numbers
+- [x] Bulk of funding tied to Mainnet adoption milestones
+- [x] Performance bonus tied to CC burn
+- [x] CIP-56 V1 and V2 alignment confirmed
+- [x] CIP-103 dApp API integration confirmed
+- [x] Mainnet commitment confirmed
+- [x] Security audit included in M2
+- [x] Maintenance window committed
+- [x] Apache 2.0 open source commitment confirmed
